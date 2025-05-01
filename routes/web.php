@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MemberInputController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,7 +57,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>'guest'],function(){
     Route::get('/register',[AuthController::class,'register']);
-    Route::post('/register',[AuthController::class,'registerPost']);
+    Route::post('/registerpost',[AuthController::class,'registerPost']);
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::post('/loginpost', [UserController::class, 'loginPost']);
 
@@ -64,8 +65,30 @@ Route::group(['middleware'=>'guest'],function(){
 });
 
 
-Route::group(['middleware'=>'auth'],function(){
-    Route::get('/authmain',[UserController::class,'authMain']);
-    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+
+// for user
+Route::group(['prefix'=>'user','middleware'=>'isUser'],function(){
+    Route::get('/', [UserController::class,'userIndex']);
 });
 
+
+
+// for admin
+Route::group(['prefix'=>'admin','middleware'=>'isAdmin'],function(){
+    Route::get('/', [AdminController::class,'adminPage']);
+});
+
+
+
+
+
+
+
+
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/home',[UserController::class,'authMain']);
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+});

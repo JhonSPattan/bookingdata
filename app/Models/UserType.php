@@ -11,6 +11,5 @@ class UserType extends Model
     protected $primaryKey = 'userTypeId';
     public $timestamps = false;
     public $incrementing = true;
-
     use HasFactory;
 }

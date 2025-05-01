@@ -82,7 +82,14 @@ public static function register(){
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect('/authmain')->with('success', 'Login successful.');
+            if(Auth::user()->userType == 2){
+                // return "Hello world user";
+                return redirect('/user/');
+            }else if(Auth::user()->userType == 1){
+                // return "Hello world Admin";
+                return redirect('/admin/');
+                // return redirect('/authmain')->with('success', 'Login successful.');
+            }
         }
 
         return redirect('/loginerror')->with('error', 'Invalid credentials.');
@@ -90,7 +97,12 @@ public static function register(){
     }
 
     public static function authMain(){
-        return "Hello world Auth main page";
+        return "Hello world Auth main page with ".Auth::user()->userType;
+    }
+
+
+    public static function userIndex(){
+        return "Hello world User Index page";
     }
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2025 at 03:15 PM
+-- Generation Time: May 01, 2025 at 04:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ploy`
 --
+CREATE DATABASE IF NOT EXISTS `ploy` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ploy`;
 
 -- --------------------------------------------------------
 
@@ -27,11 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `memberinput`
 --
 
-DROP DATABASE IF EXISTS ploy;
-CREATE DATABASE ploy;
-USE ploy;
-
-
+DROP TABLE IF EXISTS `memberinput`;
 CREATE TABLE `memberinput` (
   `IdMember` int(11) NOT NULL,
   `firstName` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -92,6 +90,7 @@ INSERT INTO `memberinput` (`IdMember`, `firstName`, `lastName`, `datetime`, `roo
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `userId` int(11) NOT NULL,
   `username` text DEFAULT NULL,
@@ -109,7 +108,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userId`, `username`, `firstname`, `lastname`, `department`, `email`, `password`, `phone`, `userType`) VALUES
-(1, '123456', 'ปฏิภาณ', 'พลวิรัตน์', 'ABC', 'k113@gmail.com', '$2y$10$jJpk.PhNyAAcWFL8cEaPUOT4SstYpfmeYQOdlTZk6827WdNsyTcZi', '0995554444', NULL);
+(1, '123456', 'ปฏิภาณ', 'พลวิรัตน์', 'ABC', 'k113@gmail.com', '$2y$10$jJpk.PhNyAAcWFL8cEaPUOT4SstYpfmeYQOdlTZk6827WdNsyTcZi', '0995554444', 2),
+(2, '178945', 'ปฏิภาณ', 'พลวิรัตน์', 'ABC', 'k110@gmail.com', '$2y$10$WxRxJgifr7BH6pktmUSTQuWXPcecVFrSy/UoPnmagCRGB2YoQBrpa', '0995554444', 1),
+(3, '178944', 'ปฏิภาณ', 'พลวิรัตน์', 'ABC', 'k111@gmail.com', '$2y$10$UfPkYYsUKlWN9ykv3BEIDOjUb7gG6vXuO386b2Px0qHeWGdaoAOgi', '0995554444', 1);
 
 -- --------------------------------------------------------
 
@@ -117,6 +118,7 @@ INSERT INTO `user` (`userId`, `username`, `firstname`, `lastname`, `department`,
 -- Table structure for table `usertype`
 --
 
+DROP TABLE IF EXISTS `usertype`;
 CREATE TABLE `usertype` (
   `userTypeId` int(11) NOT NULL,
   `userTypeName` text DEFAULT NULL
@@ -167,7 +169,7 @@ ALTER TABLE `memberinput`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `usertype`

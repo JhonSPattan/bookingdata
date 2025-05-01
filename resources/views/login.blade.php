@@ -20,7 +20,7 @@
 
         body {
             display: flex;
-            align-items: center;
+            align-items: center;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
             justify-content: center;
             /* width: 640; */
             height: 100vh;
